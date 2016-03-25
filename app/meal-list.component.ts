@@ -22,9 +22,9 @@ import { CaloriePipe } from './calorie-pipe';
    <edit-meal *ngIf="selectedMeal" [meal]="selectedMeal"></edit-meal>
    <add-meal (onSubmitAddMeal)="addMeal($event)"></add-meal>
    <button (click)="totalCalories(mealList)" class="btn btn-danger">Show Total Calories</button>
-   <h3>{{ totalCals }}<h3>
+   <h3 *ngIf="totalCals > 0">Total calories: {{ totalCals }} </h3>
    <button (click)="averageCalories(mealList)" class="btn btn-danger">Show Average Calories</button>
-   <h3>{{ avgCals }}<h3>
+   <h3 *ngIf="avgCals > 0">Average calories: {{ avgCals }}<h3>
   `
 })
 

@@ -8,9 +8,9 @@ import { Meal } from './meal.model';
   template: `
   <br>
   <div>
-  <h4 (click)="mealInfoTrigger(meal)">Meal: {{ meal.name }}</h4>
-  <h4>{{ details }}</h4>
-  <h4>{{ calories }}</h4>
+  <h4 (click)="mealInfoTrigger(meal)" >Meal: {{ meal.name }}</h4>
+  <h4 *ngIf="selectedMeal">Details: {{ details }}</h4>
+  <h4 *ngIf="selectedMeal">Calories: {{ calories }}</h4>
   </div>
   `
 })
@@ -19,9 +19,11 @@ export class MealComponent {
   public mealList: Meal[];
   calories: number;
   details: string;
-
-  mealInfoTrigger(meal: Meal, details, calories) {
-      this.details = meal.details;
-      this.calories = meal.calories;
-  }
+  public selectedMeal;
+  mealInfoTrigger(clickedMeal: Meal, details, calories){
+        this.selectedMeal = clickedMeal;
+        this.details = clickedMeal.details;
+        console.log(this.details);
+        this.calories = clickedMeal.calories;
+    }
 }
