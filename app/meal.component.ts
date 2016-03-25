@@ -9,17 +9,18 @@ import { Meal } from './meal.model';
   <br>
   <div>
   <h4 (click)="mealInfoTrigger(meal)">Meal name: {{ meal.name }}</h4>
+  <h4>{{ details }}</h4>
+  <h4>{{ calories }}</h4>
   </div>
   `
 })
 export class MealComponent {
   public meal: Meal;
-  public thingEmitter: EventEmitter<Object>;
-  constructor() {
-    this.thingEmitter = new EventEmitter();
-  }
+
   mealInfoTrigger(meal: Meal) {
-    this.thingEmitter.emit(meal);
+    console.log("clicked");
+      this.details = meal.details;
+      this.calories = meal.calories;
   }
 }
 
