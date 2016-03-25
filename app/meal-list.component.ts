@@ -17,7 +17,7 @@ import { CaloriePipe } from './calorie-pipe';
     <option value="unhealthy">Unhealthy</option>
     <option value="healthy">Healthy</option>
   </select>
-  <meal-display *ngFor="#meal of mealList | calorie:filterCalorie" (click)="mealClicked(meal)" [class.selected]="meal === selectedMeal" [meal]="meal" [mealList]="mealList">
+  <meal-display *ngFor="#meal of mealList | calorie:filterCalorie" (click)="mealClicked(meal)" [class.selected]="meal === selectedMeal" [meal]="meal">
    </meal-display>
    <edit-meal *ngIf="selectedMeal" [meal]="selectedMeal"></edit-meal>
    <add-meal (onSubmitAddMeal)="addMeal($event)"></add-meal>

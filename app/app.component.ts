@@ -1,6 +1,7 @@
 import { Component, EventEmitter } from 'angular2/core';
 import { MealListComponent } from './meal-list.component';
 import { Meal } from './meal.model';
+import { EditMealComponent } from './edit-meal.component';
 
 @Component({
   selector: 'app',
@@ -9,6 +10,9 @@ import { Meal } from './meal.model';
   <div class="container">
   <h1>Meal Tracker</h1>
   <meal-list [mealList]="meals" (onMealSelect)="mealWasSelected($event)"></meal-list>
+    <h5>{{ details }}</h5>
+    <h5>{{ calories }}</h5>
+
   </div>
   `
 })
@@ -24,6 +28,8 @@ export class AppComponent {
     ];
   }
   mealWasSelected(clickedMeal: Meal): void {
-    console.log('parent', clickedMeal)
+    console.log("clicked");
+      this.details = clickedMeal.details;
+      this.calories = clickedMeal.calories;
   }
 }

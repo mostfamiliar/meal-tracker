@@ -1,5 +1,5 @@
 import { Pipe, PipeTransform } from 'angular2/core';
-import { Meal } from './pipe.model';
+import { Meal } from './meal.model';
 
 @Pipe({
   name: 'calorie'
@@ -11,11 +11,11 @@ export class CaloriePipe implements PipeTransform {
     console.log(calorieFilter);
     if(calorieFilter === 'unhealthy') {
       console.log(input);
-      return input.filter((meal){
+      return input.filter((meal) => {
         return meal.calories > 300;
       })
     } else if (calorieFilter === 'healthy') {
-      return input.filter((meal) {
+      return input.filter((meal) => {
         return meal.calories < 300;
       })
     } else {
