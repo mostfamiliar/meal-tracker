@@ -17,10 +17,11 @@ import { CaloriePipe } from './calorie-pipe';
     <option value="unhealthy">Unhealthy</option>
     <option value="healthy">Healthy</option>
   </select>
-  <meal-display *ngFor="#meal of mealList | calorie:filterCalorie" (click)="mealClicked(meal)" [class.selected]="meal === selectedMeal" [meal]="meal">
+  <meal-display *ngFor="#meal of mealList | calorie:filterCalorie" (click)="mealClicked(meal)" [class.selected]="meal === selectedMeal" [meal]="meal" [mealList]="mealList">
    </meal-display>
    <edit-meal *ngIf="selectedMeal" [meal]="selectedMeal"></edit-meal>
    <add-meal (onSubmitAddMeal)="addMeal($event)"></add-meal>
+   <button (click)="totalCalories(mealList)" class="btn btn-danger">Show Total Calories</button>
   `
 })
 
@@ -37,12 +38,20 @@ export class MealListComponent {
     this.onMealSelect.emit(clickedMeal);
   }
   addMeal(eventArr):void {
-    console.log(eventArr);
     this.mealList.push(
       new Meal(eventArr[0], eventArr[1], eventArr[2])
     );
   }
   onChange(filterOption){
     this.filterCalorie = filterOption;
+  }
+  totalCalories(mealList: Meal[]){
+    console.log()
+    var calories: number = 0;
+    for (var meal of mealList) {
+      calories = calories + meal.calories;
+
+    }
+      console.log(calories);
   }
 }

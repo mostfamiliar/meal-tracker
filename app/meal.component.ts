@@ -4,11 +4,11 @@ import { Meal } from './meal.model';
 
 @Component({
   selector: 'meal-display',
-  inputs: ['meal'],
+  inputs: ['meal', 'mealList'],
   template: `
   <br>
   <div>
-  <h4 (click)="mealInfoTrigger(meal)">Meal name: {{ meal.name }}</h4>
+  <h4 (click)="mealInfoTrigger(meal)">Meal: {{ meal.name }}</h4>
   <h4>{{ details }}</h4>
   <h4>{{ calories }}</h4>
   </div>
@@ -16,14 +16,10 @@ import { Meal } from './meal.model';
 })
 export class MealComponent {
   public meal: Meal;
+  public mealList: Meal[];
 
   mealInfoTrigger(meal: Meal) {
-    console.log("clicked");
       this.details = meal.details;
       this.calories = meal.calories;
   }
 }
-
-
-// <h4>Details: {{ meal.details }}</h4>
-// <h4>Calories: {{ meal.calories}}</h4>

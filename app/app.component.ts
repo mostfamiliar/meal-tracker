@@ -25,8 +25,5 @@ export class AppComponent {
     ];
   }
   mealWasSelected(clickedMeal: Meal): void {
-    // console.log("clicked");
-    //   this.details = clickedMeal.details;
-    //   this.calories = clickedMeal.calories;
   }
 }
