@@ -17,8 +17,10 @@ import { Meal } from './meal.model';
 export class MealComponent {
   public meal: Meal;
   public mealList: Meal[];
+  calories: number;
+  details: string;
 
-  mealInfoTrigger(meal: Meal) {
+  mealInfoTrigger(meal: Meal, details, calories) {
       this.details = meal.details;
       this.calories = meal.calories;
   }

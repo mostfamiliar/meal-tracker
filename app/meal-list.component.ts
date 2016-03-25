@@ -22,6 +22,7 @@ import { CaloriePipe } from './calorie-pipe';
    <edit-meal *ngIf="selectedMeal" [meal]="selectedMeal"></edit-meal>
    <add-meal (onSubmitAddMeal)="addMeal($event)"></add-meal>
    <button (click)="totalCalories(mealList)" class="btn btn-danger">Show Total Calories</button>
+   <h3>{{ calories }}<h3>
   `
 })
 
@@ -30,6 +31,8 @@ export class MealListComponent {
   public onMealSelect: EventEmitter<Meal>;
   public selectedMeal: Meal;
   public filterCalorie: string = "all";
+  public calorieTotal: number = null;
+  calories: number;
   constructor() {
     this.onMealSelect = new EventEmitter();
   }
@@ -45,13 +48,11 @@ export class MealListComponent {
   onChange(filterOption){
     this.filterCalorie = filterOption;
   }
-  totalCalories(mealList: Meal[]){
-    console.log()
-    var calories: number = 0;
+  totalCalories(mealList: Meal[], calorieTotal){
+    this.calorieTotal = 0;
     for (var meal of mealList) {
-      calories = calories + meal.calories;
-
+      this.calorieTotal = this.calorieTotal + meal.calories;
     }
-      console.log(calories);
+      this.calories = this.calorieTotal;
   }
 }
