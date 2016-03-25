@@ -1,11 +1,14 @@
-import { Component } from 'angular2/core';
+import { Component, EventEmitter } from 'angular2/core';
+import { MealListComponent } from './meal-list.component';
 import { Meal } from './meal.model';
 
 @Component({
   selector: 'app',
+  directives: [MealListComponent],
   template: `
   <div class="container">
-  <h1>Test</h1>
+  <h1>Meal Tracker</h1>
+  <meal-list [mealList]="meals" (onMealSelect)="mealWasSelected($event)"></meal-list>
   </div>
   `
 })
@@ -19,5 +22,8 @@ export class AppComponent {
       new Meal("Kale Smoothie", "with chia", 160),
       new Meal("Vegan Pho", "Full of vegetables", 190)
     ];
+  }
+  mealWasSelected(clickedMeal: Meal): void {
+    console.log('parent', clickedMeal)
   }
 }
