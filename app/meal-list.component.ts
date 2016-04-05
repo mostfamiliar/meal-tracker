@@ -14,16 +14,24 @@ import { MealDisplayComponent } from './meal-info.component';
   pipes: [CaloriePipe],
   directives: [MealComponent, EditMealComponent, AddMealComponent, MealDisplayComponent],
   template: `
+  <div class="container">
   <select (change)="onChange($event.target.value)" class="filter form-control">
     <option value="all">Show All</option>
     <option value="unhealthy">Unhealthy</option>
     <option value="healthy">Healthy</option>
   </select>
-  <meal-display *ngFor="#meal of mealList | calorie:filterCalorie" (click)="mealClicked(meal)" [class.selected]="meal === selectedMeal" [meal]="meal" [mealList]="mealList">
-   </meal-display>
-   <meal-info *ngIf="selectedMeal" [meal]="selectedMeal"></meal-info>
-   <edit-meal *ngIf="selectedMeal" [meal]="selectedMeal"></edit-meal>
-   <add-meal (onSubmitAddMeal)="addMeal($event)"></add-meal>
+  <div class="col-md-6">
+    <meal-display *ngFor="#meal of mealList | calorie:filterCalorie" (click)="mealClicked(meal)" [class.selected]="meal === selectedMeal" [meal]="meal" [mealList]="mealList">
+     </meal-display>
+     <edit-meal *ngIf="selectedMeal" [meal]="selectedMeal"></edit-meal>
+     <add-meal (onSubmitAddMeal)="addMeal($event)"></add-meal>
+
+   </div>
+   <div class="col-md-6">
+     <meal-info *ngIf="selectedMeal" [meal]="selectedMeal"></meal-info>
+   </div>
+        </div>
+
    <button (click)="totalCalories(mealList)" class="btn btn-danger">Show Total Calories</button>
    <h3 *ngIf="totalCals > 0">Total calories: {{ totalCals }} </h3>
    <button (click)="averageCalories(mealList)" class="btn btn-danger">Show Average Calories</button>
