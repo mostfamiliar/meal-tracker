@@ -12,7 +12,7 @@ import { MealDisplayComponent } from './meal-info.component';
   inputs: ['mealList'],
   outputs: ['onMealSelect'],
   pipes: [CaloriePipe],
-  directives: [MealComponent, EditMealComponent, AddMealComponent],
+  directives: [MealComponent, EditMealComponent, AddMealComponent, MealDisplayComponent],
   template: `
   <select (change)="onChange($event.target.value)" class="filter form-control">
     <option value="all">Show All</option>
@@ -21,6 +21,7 @@ import { MealDisplayComponent } from './meal-info.component';
   </select>
   <meal-display *ngFor="#meal of mealList | calorie:filterCalorie" (click)="mealClicked(meal)" [class.selected]="meal === selectedMeal" [meal]="meal" [mealList]="mealList">
    </meal-display>
+   <meal-info *ngIf="selectedMeal" [meal]="selectedMeal"></meal-info>
    <edit-meal *ngIf="selectedMeal" [meal]="selectedMeal"></edit-meal>
    <add-meal (onSubmitAddMeal)="addMeal($event)"></add-meal>
    <button (click)="totalCalories(mealList)" class="btn btn-danger">Show Total Calories</button>
@@ -38,6 +39,7 @@ export class MealListComponent {
   public calorieTotal: number = null;
   totalCals: number;
   avgCals: number;
+
   constructor() {
     this.onMealSelect = new EventEmitter();
   }
