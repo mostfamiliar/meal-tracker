@@ -4,6 +4,8 @@ import { MealComponent } from './meal.component';
 import { EditMealComponent } from './edit-meal.component';
 import { AddMealComponent } from './add-meal.component';
 import { CaloriePipe } from './calorie-pipe';
+import { MealDisplayComponent } from './meal-info.component';
+
 
 @Component({
   selector: 'meal-list',

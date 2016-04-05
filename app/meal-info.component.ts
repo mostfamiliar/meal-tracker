@@ -1,17 +1,14 @@
 import { Component, EventEmitter } from 'angular2/core';
 import { Meal } from './meal.model';
 
-
 @Component({
-  selector: 'meal-display',
+  selector: 'meal-info',
   inputs: ['meal'],
   template: `
-  <br>
-  <div>
-  <h4>Meal: {{ meal.name }}</h4>
-  </div>
+  <h3>{{meal.details}}{{meal.calories}}</h3>
   `
 })
-export class MealComponent {
+
+export class MealDisplayComponent{
   public meal: Meal;
 }
