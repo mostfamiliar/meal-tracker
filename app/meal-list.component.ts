@@ -28,7 +28,7 @@ import { MealDisplayComponent } from './meal-info.component';
 
    </div>
    <div class="col-md-6">
-     <meal-info *ngIf="selectedMeal" [meal]="selectedMeal"></meal-info>
+
    </div>
         </div>
 
